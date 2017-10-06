@@ -58,18 +58,22 @@ if ($_POST)
 }
 ?>
 
-<div id="videoPlayer" class="player"
-     data-property="{videoURL:'http://youtu.be/l_tHTmd5pgk',containment:'#videoPlayer',startAt:0,mute:false,autoPlay:false,loop:false,opacity:1}">
+<div class="container-fluid no-margin videoContain hidden-xs visible-sm visible-md visible-lg">
+    <div class="col-lg-12"><h2>The place to be at Euratechnologies.</h2></div>
+    <div id="videoPlayer" class="player"
+         data-property="{videoURL:'https://youtu.be/FeLrfTioYww',
+         containment:'#videoPlayer',
+         startAt:10,
+         mute:false,
+         autoPlay:true,
+         optimizeDisplay:true,
+         loop:false,
+         opacity:1}">
+    </div>
 </div>
 
-<div class="container-fluid"> <!-- Place video here! -->
-    <section id="videoBg">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>The place to be at Euratechnologies.</h1>
-            </div>
-        </div>
-    </section>
+<div class="container-fluid no-margin imgContain hidden-lg hidden-md hidden-sm visible-xs">
+    <div class="col-lg-12"><h2>The place to be at Euratechnologies.</h2></div>
 </div>
 
 
@@ -152,7 +156,9 @@ if ($_POST)
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-6 newsFrame">
-                    <a href="news.php"><img class="img-responsive" src="img/news_kayak.jpg" alt="photo meet up"></a>
+                    <div class="cropImg">
+                        <a href="news.php"><img class="img-responsive" src="img/news_kayak.jpg" alt="photo meet up"></a>
+                    </div>
                     <h3><a href="#">Premier meet-up de Kayak Communication</a></h3>
                     <p>Ce mardi 19 Septembre 2016, Kayak Communication a effectué son premier meet-up
                         d'une longue série dans le domaine du numérique....

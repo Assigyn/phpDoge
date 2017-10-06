@@ -3,7 +3,20 @@
 .navbar {
     margin: 0;
     min-height: 60px;
+    -webkit-transition: all 0.8s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    -o-transition: all 0.8s ease-out;
+    -ms-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out;
+    background: transparent;
 }
+
+
+.navbar.scrolled{
+    background: rgb(0,0,0); /* IE */
+    background: #ddd;
+}
+
 
 header{
     margin-bottom: 90px;
@@ -12,7 +25,6 @@ header{
 .navbar-brand {
     display: inline-block;
     padding: 0;
-
 }
 
 ul.nav {
@@ -27,7 +39,7 @@ ul.nav {
     border-color: transparent;
     padding-top: 20px;
     padding-bottom: 25px;
-    background-color: #ddd;
+    background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .active > a {
@@ -40,7 +52,7 @@ ul.nav {
 
 .navbar-default .navbar-nav > .active > a:hover {
     background-color: #2d7261;
-    color: #fff;
+    color: #fff !important;
     transition: background-color 0.5s;
 }
 
@@ -192,6 +204,7 @@ a:hover {
     margin-bottom: 40px;
 }
 
+
 /* News */
 
 .newsFrame {
@@ -200,6 +213,7 @@ a:hover {
 
 .newsFrame img {
     margin-bottom: 20px;
+    max-height: 240px;
 }
 
 /*FOOTER*/
@@ -513,8 +527,36 @@ td {
     opacity: 0;
 }
 
-iframe{
-    margin-bottom: 50px;
+#videoPlayer{
+    height: 100vh;
+}
+
+.videoContain h2{
+    margin-top: 40vh;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0 20px;
+    z-index: 50;
+}
+
+
+.videoContain{
+    background: url("../img/videobg.jpg") 0 0 no-repeat;
+    background-size:cover;
+}
+
+.imgContain h2{
+    margin-top: 40vh;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0 20px;
+    font-size: 2em;
+}
+
+.imgContain{
+    background: url("../img/videobg.jpg") 0 0 no-repeat;
+    background-size: cover;
+    height: 500px;
 }
 
 .newsPresentation{

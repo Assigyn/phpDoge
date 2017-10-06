@@ -17,7 +17,7 @@
                 </div>
                 <p>Copyright (c) Doge CLub</p>
                 <div id="socialNetworks">
-                    <ul><li><a href="#">Mentions légales</a></li>
+                    <ul>
                         <li><a href="#"><img class="img-responsive" src="img/fb_icon.png" alt="Facebook"></a></li>
                         <li><a href="#"><img class="img-responsive" src="img/twitter_icon.png" alt="Twitter"></a></li>
                         <li><a href="#"><img class="img-responsive" src="img/ytube_icon.png" alt="Twitter"></a></li>
@@ -38,16 +38,57 @@
 <script type="text/javascript">
 
     jQuery(function(){
-        jQuery("#videoPlay").YTPlayer();
+
+        jQuery("#videoPlayer").YTPlayer();
+
+        var filters = {
+            grayscale: 100,
+            brightness: 50
+        };
+
+        jQuery('#videoPlayer').YTPApplyFilters(filters)
+
+
+
+        var php_page = "<?php echo $currentPage; ?>";
+
+    if (php_page == "home") {
+
+        $('header').css('margin-bottom','0');
+
+        window.sr = ScrollReveal();
+        sr.reveal('#introduction', { duration: 600 },);
+        sr.reveal('#activities', { duration: 600 },);
+        sr.reveal('#euratechnologie', { duration: 600 },);
+        sr.reveal('#news', { duration: 600 },);
+        sr.reveal('#contact', { duration: 600 },);
+
+        function checkScroll() {
+            var startY = $('.navbar').height() * 1; //The point where the navbar changes in px
+
+            if ($(window).scrollTop() > startY) {
+                $('.navbar').addClass("scrolled");
+                $('.navbar-default .navbar-nav>li>a').css('color','#333');
+                $('.navbar-default .navbar-nav > .active > a').css('color','#fff');
+            }
+            else {
+                $('.navbar').removeClass("scrolled");
+                $('.navbar-default .navbar-nav>li>a').css('color','#fff');
+            }
+        }
+
+        if ($('.navbar').length > 0) {
+            $(window).on("scroll load resize", function () {
+                checkScroll();
+            });
+        }
+    }
+
+    else{
+        $('.navbar ').css({"background-color": "#ddd", "color": "#333"});
+    }
+
     });
-
-    window.sr = ScrollReveal();
-    sr.reveal('#introduction', { duration: 600 },);
-    sr.reveal('#activities', { duration: 600 },);
-    sr.reveal('#euratechnologie', { duration: 600 },);
-    sr.reveal('#news', { duration: 600 },);
-    sr.reveal('#contact', { duration: 600 },);
-
 
 </script>
 

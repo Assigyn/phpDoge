@@ -1,5 +1,3 @@
-<?php $currentPage  = ''; ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
