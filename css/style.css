@@ -1,3 +1,6 @@
+/*Modal hack*/
+
+
 /* HEADER AND NAV  */
 
 .navbar {
@@ -92,6 +95,10 @@ h2 {
     text-align: center;
     margin-bottom: 50px;
     text-transform: uppercase;
+}
+
+.mAuto{
+    margin: auto;
 }
 
 h3 {
@@ -601,6 +608,10 @@ ul.team-social li{
 
     .activitiesFrame {
         margin-bottom: 60px;
+    }
+
+    .businessDescription{
+        margin-top: 30px;
     }
 
     .activitiesFrame h4 {

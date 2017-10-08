@@ -34,10 +34,11 @@
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scrollreveal.min.js"></script>
+<script src="js/navbar.js"></script>
 
 <script type="text/javascript">
 
-    jQuery(function(){
+    jQuery(function () {
 
         jQuery("#videoPlayer").YTPlayer();
 
@@ -49,44 +50,33 @@
         jQuery('#videoPlayer').YTPApplyFilters(filters)
 
 
+        //Condition for change of navbar
 
         var php_page = "<?php echo $currentPage; ?>";
 
-    if (php_page == "home") {
+        if (php_page == "home") {
 
-        $('header').css('margin-bottom','0');
+            $('header').css('margin-bottom', '0');
 
-        window.sr = ScrollReveal();
-        sr.reveal('#introduction', { duration: 600 },);
-        sr.reveal('#activities', { duration: 600 },);
-        sr.reveal('#euratechnologie', { duration: 600 },);
-        sr.reveal('#news', { duration: 600 },);
-        sr.reveal('#contact', { duration: 600 },);
+            window.sr = ScrollReveal();
+            sr.reveal('#introduction', {duration: 600},);
+            sr.reveal('#activities', {duration: 600},);
+            sr.reveal('#euratechnologie', {duration: 600},);
+            sr.reveal('#news', {duration: 600},);
+            sr.reveal('#contact', {duration: 600},);
 
-        function checkScroll() {
-            var startY = $('.navbar').height() * 1; //The point where the navbar changes in px
+            checkScroll();
 
-            if ($(window).scrollTop() > startY) {
-                $('.navbar').addClass("scrolled");
-                $('.navbar-default .navbar-nav>li>a').css('color','#333');
-                $('.navbar-default .navbar-nav > .active > a').css('color','#fff');
-            }
-            else {
-                $('.navbar').removeClass("scrolled");
-                $('.navbar-default .navbar-nav>li>a').css('color','#fff');
+            if ($('.navbar').length > 0) {
+                $(window).on("scroll load resize", function () {
+                    checkScroll();
+                });
             }
         }
 
-        if ($('.navbar').length > 0) {
-            $(window).on("scroll load resize", function () {
-                checkScroll();
-            });
+        else {
+            $('.navbar ').css({"background-color": "#ddd", "color": "#333"});
         }
-    }
-
-    else{
-        $('.navbar ').css({"background-color": "#ddd", "color": "#333"});
-    }
 
     });
 
