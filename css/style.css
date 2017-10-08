@@ -20,7 +20,6 @@
     background: #ddd;
 }
 
-
 header{
     margin-bottom: 90px;
 }
@@ -104,6 +103,12 @@ h2 {
 h3 {
     margin-top: 0;
     margin-bottom: 20px;
+}
+
+h5{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 0;
 }
 
 h4 {
@@ -449,6 +454,16 @@ td {
     width: 100%;
 }
 
+.newsImg{
+    background-color: #eee;
+}
+
+.newsImg img {
+    display: block;
+    height: 200px;
+    margin: auto;
+}
+
 .business-modal .modal-content {
     min-height: 100%;
     padding: 100px 0;
@@ -594,7 +609,6 @@ ul.team-social li{
 }
 
 
-
 /* MEDIA QUERIES*/
 
 @media (min-width: 767px) {
@@ -605,6 +619,11 @@ ul.team-social li{
 }
 
 @media screen and (max-width: 768px) {
+
+    .newsImg img {
+        height: auto;
+    }
+
 
     .activitiesFrame {
         margin-bottom: 60px;
@@ -625,6 +644,7 @@ ul.team-social li{
 
     footer {
         text-align: center;
+        margin-top: 40px;
     }
 
     #socialNetworks ul {

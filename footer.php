@@ -40,6 +40,7 @@
 
     jQuery(function () {
 
+
         jQuery("#videoPlayer").YTPlayer();
 
         var filters = {
