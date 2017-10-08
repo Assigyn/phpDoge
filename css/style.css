@@ -8,7 +8,7 @@
     -o-transition: all 0.8s ease-out;
     -ms-transition: all 0.8s ease-out;
     transition: all 0.8s ease-out;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -39,20 +39,14 @@ ul.nav {
     border-color: transparent;
     padding-top: 20px;
     padding-bottom: 25px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
-.navbar-default .navbar-nav > .active > a {
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
     background-color: #FF622A;
     color: #fff;
     border-width: 1px;
     border-radius: 20px;
-    transition: background-color 0.5s;
-}
-
-.navbar-default .navbar-nav > .active > a:hover {
-    background-color: #2d7261;
-    color: #fff !important;
     transition: background-color 0.5s;
 }
 
@@ -406,7 +400,13 @@ td {
 }
 
 .business-link {
-    border: 3px solid #2d7261;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+.business-caption{
+    border: 1px solid #ddd;
 }
 
 #business .business-item .business-caption {
@@ -414,8 +414,6 @@ td {
     margin: 0 auto;
     padding: 25px;
     text-align: center;
-    background-color: #2d7261;
-    color: white;
     margin-bottom: 40px;
 }
 
@@ -536,7 +534,7 @@ td {
     color: #FFF;
     font-weight: bold;
     padding: 0 20px;
-    z-index: 50;
+    text-align: center;
 }
 
 

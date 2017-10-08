@@ -12,7 +12,7 @@ if ($_POST)
 
     if (empty($_POST['first_name']))
     {
-        $errors['nom1'] = "Vous devez absolument indiquer votre nom!";
+        $errors['nom1'] = "Veuillez indiquer votre nom.";
     }
     if (!preg_match("/^[a-zA-Z ]*$/", $_POST['first_name']))
     {
@@ -20,7 +20,7 @@ if ($_POST)
     }
     if (empty($_POST['last_name']))
     {
-        $errors['prenom1'] = "Vous devez absolument indiquer votre prénom!";
+        $errors['prenom1'] = "Veuillez indiquer votre prénom";
     }
     if (!preg_match("/^[a-zA-Z ]*$/", $_POST['last_name']))
     {
@@ -28,15 +28,15 @@ if ($_POST)
     }
     if (!preg_match("/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/", $_POST['email']))
     {
-        $errors['email1'] = "Votre mail doit être valide!";
+        $errors['email1'] = "Votre mail est invalide.";
     }
     if (empty($_POST['objet']))
     {
-        $errors['objet1'] = "Vous devez absolument indiquer votre objet!";
+        $errors['objet1'] = "Veuillez indiquer l'objet de votre message.";
     }
     if (empty($_POST['message']))
     {
-        $errors['message1'] = "Vous devez absolument écrire un message!";
+        $errors['message1'] = "Vous n'avez pas écrit de message.";
     }
     if (count($errors) == 0) {
         {
@@ -59,7 +59,7 @@ if ($_POST)
 ?>
 
 <div class="container-fluid no-margin videoContain hidden-xs visible-sm visible-md visible-lg">
-    <div class="col-lg-12"><h2>The place to be at Euratechnologies.</h2></div>
+    <div class="col-lg-12"><h2>The place to be at Euratechnologies</h2></div>
     <div id="videoPlayer" class="player"
          data-property="{videoURL:'https://youtu.be/FeLrfTioYww',
          containment:'#videoPlayer',
@@ -67,13 +67,13 @@ if ($_POST)
          mute:false,
          autoPlay:true,
          optimizeDisplay:true,
-         loop:false,
+         loop:true,
          opacity:1}">
     </div>
 </div>
 
 <div class="container-fluid no-margin imgContain hidden-lg hidden-md hidden-sm visible-xs">
-    <div class="col-lg-12"><h2>The place to be at Euratechnologies.</h2></div>
+    <div class="col-lg-12"><h2>The place to be at Euratechnologies</h2></div>
 </div>
 
 
@@ -217,7 +217,7 @@ if ($_POST)
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="company" name="company" type="text" placeholder="Votre company * (facultatif)" value="<?php if(isset($_POST['company'])) echo $_POST['company']; ?>">
+                        <input class="form-control" id="company" name="company" type="text" placeholder="Votre entreprise (facultatif)" value="<?php if(isset($_POST['company'])) echo $_POST['company']; ?>">
                     </div>
                     <div class="form-group">
                         <input class="form-control" id="email" name="email" type="text" placeholder="Votre email *" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>">
@@ -232,7 +232,7 @@ if ($_POST)
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="message" name="message" placeholder="Votre Message..."><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
+                        <textarea class="form-control" id="message" name="message" placeholder="Votre Message...*"><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
                         <div class="alert alert-danger" role="alert">
                             <?php if(isset($errors['message1'])) echo $errors['message1']; ?>
                         </div>
