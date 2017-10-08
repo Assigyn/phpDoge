@@ -2,7 +2,7 @@
     <div class="container">
         <footer>
             <div class="row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-sm-6 col-xs-12">
                     <ul>
                         <li><a href="home.php">Home</a></li>
                         <li><a href="business.php">Entreprises</a></li>
@@ -12,7 +12,7 @@
                         <li><a href="/admin/login.php">Private acess</a></li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-sm-12 text-right visible-lg visible-md visible-sm hidden-xs">
+                <div class="col-sm-6 col-xs-12 text-right visible-lg visible-md visible-sm hidden-xs">
                     <img class="logoImg" src="img/logo_white.png" alt="logo Doge" title="logo Doge">
                 </div>
                 <p>Copyright (c) Doge CLub</p>
