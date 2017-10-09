@@ -572,7 +572,7 @@ td {
 }
 
 .imgContain {
-    background: url("../img/videobg.jpg") 0 0 no-repeat;
+    background: url("../img/videobgsm.jpg") 0 0 no-repeat;
     background-size: cover;
     height: 500px;
 }

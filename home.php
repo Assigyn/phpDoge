@@ -59,12 +59,11 @@ if ($_POST)
 ?>
 
 <div class="container-fluid no-margin videoContain hidden-xs visible-sm visible-md visible-lg">
-    <div class="col-lg-12"><h2>The place to be at Euratechnologies</h2></div>
     <div id="videoPlayer" class="player"
          data-property="{videoURL:'https://youtu.be/FeLrfTioYww',
          containment:'#videoPlayer',
          startAt:10,
-         mute:false,
+         mute:true,
          autoPlay:true,
          optimizeDisplay:true,
          loop:true,
