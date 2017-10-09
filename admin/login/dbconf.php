@@ -2,7 +2,7 @@
 //DATABASE CONNECTION VARIABLES
 $host = "localhost"; // Host name
 $username = "root"; // Mysql username
-$password = "uk&È-ÇÀ_uk"; // Mysql password
+$password = "dimi"; // Mysql password
 $db_name = "Doge_Club_BDD"; // Database name
 
 //DO NOT CHANGE BELOW THIS LINE UNLESS YOU CHANGE THE NAMES OF THE MEMBERS AND LOGINATTEMPTS TABLES

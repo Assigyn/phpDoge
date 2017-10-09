@@ -26,7 +26,7 @@ include('header.php'); ?>
                     <div class="thumbnail portraitInd">
                         <img src="img/team-1.jpg" class="img-responsive" alt="team1">
                         <div class="caption">
-                            <h3 class="text-center">John Doe</h3>
+                            <h3 class="text-center">Jhon Doe</h3>
                             <ul class="team-social">
                                 <li><a href="#"><img src="img/mail_icon.png" alt="mail icon"></a></li>
                                 <li><a href="#"><img src="img/linkedin_icon.png" alt="mail icon"></a></li>
@@ -38,7 +38,7 @@ include('header.php'); ?>
                         <div class="thumbnail portraitInd">
                             <img src="img/team-1.jpg" class="img-responsive" alt="team1">
                             <div class="caption">
-                                <h3 class="text-center">John Doe</h3>
+                                <h3 class="text-center">Jhon Doe</h3>
                                 <ul class="team-social">
                                     <li><a href="#"><img src="img/mail_icon.png" alt="mail icon"></a></li>
                                     <li><a href="#"><img src="img/linkedin_icon.png" alt="mail icon"></a></li>
@@ -50,7 +50,7 @@ include('header.php'); ?>
                     <div class="thumbnail portraitInd">
                         <img src="img/team-1.jpg" class="img-responsive" alt="team1">
                         <div class="caption">
-                            <h3 class="text-center">John Doe</h3>
+                            <h3 class="text-center">Jhon Doe</h3>
                             <ul class="team-social">
                                 <li><a href="#"><img src="img/mail_icon.png" alt="mail icon"></a></li>
                                 <li><a href="#"><img src="img/linkedin_icon.png" alt="mail icon"></a></li>
@@ -62,7 +62,7 @@ include('header.php'); ?>
                     <div class="thumbnail portraitInd">
                         <img src="img/team-1.jpg" class="img-responsive" alt="team1">
                         <div class="caption">
-                            <h3 class="text-center">John Doe</h3>
+                            <h3 class="text-center">Jhon Doe</h3>
                             <ul class="team-social">
                                 <li><a href="#"><img src="img/mail_icon.png" alt="mail icon"></a></li>
                                 <li><a href="#"><img src="img/linkedin_icon.png" alt="mail icon"></a></li>

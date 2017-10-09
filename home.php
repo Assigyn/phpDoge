@@ -12,7 +12,7 @@ if ($_POST)
 
     if (empty($_POST['first_name']))
     {
-        $errors['nom1'] = "Veuillez indiquer votre nom.";
+        $errors['nom1'] = "Vous devez absolument indiquer votre nom!";
     }
     if (!preg_match("/^[a-zA-Z ]*$/", $_POST['first_name']))
     {
@@ -20,7 +20,7 @@ if ($_POST)
     }
     if (empty($_POST['last_name']))
     {
-        $errors['prenom1'] = "Veuillez indiquer votre prénom";
+        $errors['prenom1'] = "Vous devez absolument indiquer votre prénom!";
     }
     if (!preg_match("/^[a-zA-Z ]*$/", $_POST['last_name']))
     {
@@ -28,15 +28,15 @@ if ($_POST)
     }
     if (!preg_match("/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/", $_POST['email']))
     {
-        $errors['email1'] = "Votre mail est invalide.";
+        $errors['email1'] = "Votre mail doit être valide!";
     }
     if (empty($_POST['objet']))
     {
-        $errors['objet1'] = "Veuillez indiquer l'objet de votre message.";
+        $errors['objet1'] = "Vous devez absolument indiquer votre objet!";
     }
     if (empty($_POST['message']))
     {
-        $errors['message1'] = "Vous n'avez pas écrit de message.";
+        $errors['message1'] = "Vous devez absolument écrire un message!";
     }
     if (count($errors) == 0) {
         {
@@ -58,21 +58,44 @@ if ($_POST)
 }
 ?>
 
+<?php
+        // Connecting to DB
+        require('bdd/connection.php');
+
+        // Getting ID from previous query ?
+        $idDelete = isset($_GET['delete']) && $_GET['delete'] ? $_GET['delete'] : null;
+
+        // If an ID has been sent, delete this one
+        if ($idDelete) {
+            $sqlQueryDeleteQuote = "DELETE FROM evenements WHERE id = $idDelete";
+            $bdd->query($sqlQueryDeleteQuote);
+        }
+
+        // Display citation's data
+        $sqlQueryQuotes = "SELECT * FROM evenements LIMIT 3";
+        $result = $bdd->query($sqlQueryQuotes);
+
+        // Checking query result
+        if (!$result)
+            echo '<p>No result founded.</p>';
+?>
+
 <div class="container-fluid no-margin videoContain hidden-xs visible-sm visible-md visible-lg">
+    <div class="col-lg-12"><h2>The place to be at Euratechnologies.</h2></div>
     <div id="videoPlayer" class="player"
          data-property="{videoURL:'https://youtu.be/FeLrfTioYww',
          containment:'#videoPlayer',
          startAt:10,
-         mute:true,
+         mute:false,
          autoPlay:true,
          optimizeDisplay:true,
-         loop:true,
+         loop:false,
          opacity:1}">
     </div>
 </div>
 
 <div class="container-fluid no-margin imgContain hidden-lg hidden-md hidden-sm visible-xs">
-    <div class="col-lg-12"><h2>The place to be at Euratechnologies</h2></div>
+    <div class="col-lg-12"><h2>The place to be at Euratechnologies.</h2></div>
 </div>
 
 
@@ -154,35 +177,34 @@ if ($_POST)
                 </div>
             </div>
             <div class="row">
+                
+                <?php  
+                while ($quote = $result->fetch_assoc()) { 
+                ?>
+            
+            
                 <div class="col-md-4 col-sm-6 newsFrame">
                     <div class="cropImg">
-                        <a href="news.php"><img class="img-responsive" src="img/news_kayak.jpg" alt="photo meet up"></a>
+
+
+                        <a href="news.php">
+                        <?php
+                                $sqlQueryImage = "SELECT name FROM tbl_images WHERE id =" . $quote['id_image'];
+                                $imageResult = $bdd->query($sqlQueryImage);
+                                $imageName = $imageResult->fetch_assoc();
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode($imageName['name']).'" height="250" width="100%"/>'
+                        ?>
+                    </a>
                     </div>
-                    <h3><a href="#">Premier meet-up de Kayak Communication</a></h3>
-                    <p>Ce mardi 19 Septembre 2016, Kayak Communication a effectué son premier meet-up
-                        d'une longue série dans le domaine du numérique....
+                    <h3><a href="#"><?php echo $quote['titre']; ?></a></h3>
+                    <p>
+                        <?php echo $quote['stitre']; ?>
                     </p>
                     <a class="text-bold" href="news.php">> Lire la suite</a>
                 </div>
 
-                <div class="col-md-4 col-sm-6 newsFrame">
-                    <a href="news.php"><img class="img-responsive" src="img/news_ak10.jpg" alt="photo bureau"></a>
-                    <h3><a href="news.php">La société Ak 10 arrive dans nos locaux</a></h3>
-                    <p>Ak10, nouvelle entreprise du numérique qui s'installe dans nos locaux. Leur mission :
-                        minimiser vos dépenses dans les goulags.
-                    </p>
-                    <a class="text-bold" href="news.php">> Lire la suite</a>
-                </div>
+                <?php } ?>
 
-                <div class="col-md-4 col-sm-6 newsFrame">
-                    <a href="news.php"><img class="img-responsive" src="img/news_apero.jpg" alt="photo fête"></a>
-                    <h3><a href="news.php">Retour sur l'apéro du 12 Septembre 2016</a></h3>
-                    <p>Le Doge Club a organisé ce mardi 12 Septembre 2016 un apéro pour que toutes les entreprises
-                        des locaux A et B fassent plus ample connaissance.
-                    </p>
-                    <a class="text-bold" href="news.php">> Lire la suite</a>
-                </div>
-            </div>
             <div class="row">
                 <div id="contactAnchor" class="col-lg-12 btn-seeAll">
                     <a href="news.php" class="btn btn-danger btn-lg">Voir plus d'actualités</a>
@@ -216,7 +238,7 @@ if ($_POST)
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="company" name="company" type="text" placeholder="Votre entreprise (facultatif)" value="<?php if(isset($_POST['company'])) echo $_POST['company']; ?>">
+                        <input class="form-control" id="company" name="company" type="text" placeholder="Votre company * (facultatif)" value="<?php if(isset($_POST['company'])) echo $_POST['company']; ?>">
                     </div>
                     <div class="form-group">
                         <input class="form-control" id="email" name="email" type="text" placeholder="Votre email *" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>">
@@ -231,7 +253,7 @@ if ($_POST)
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="message" name="message" placeholder="Votre Message...*"><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
+                        <textarea class="form-control" id="message" name="message" placeholder="Votre Message..."><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
                         <div class="alert alert-danger" role="alert">
                             <?php if(isset($errors['message1'])) echo $errors['message1']; ?>
                         </div>
@@ -239,10 +261,17 @@ if ($_POST)
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
             </div>
-            <div class="col-sm-12 col-md-6"> <!-- Gmp -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.6949799288104!2d3.0155632156440277!3d50.63278287950096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d55ba8f0e18f%3A0x170361d02ab8fa98!2s4+Avenue+des+Saules%2C+59160+Lille!5e0!3m2!1sfr!2sfr!4v1507454188478" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>            </div>
+            <div class="col-sm-12 col-md-6"> <!-- Gmap -->
+                <iframe width="100%" height="400" frameborder="0" style="border-radius:7px;" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyC78ZsYNiBk7RXhaewJfXk2q7MQ_yc5OuQ&zoom=17&center=50.6331%2C3.0203" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
 </div>
+
+<?php
+// Closing DB connection
+$bdd->close();
+?>
+
 <?php include ('footer.php'); ?>
 

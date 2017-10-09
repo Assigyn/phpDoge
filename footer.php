@@ -2,17 +2,17 @@
     <div class="container">
         <footer>
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-12">
                     <ul>
                         <li><a href="home.php">Home</a></li>
                         <li><a href="business.php">Entreprises</a></li>
                         <li><a href="team.php">Doge Team</a></li>
                         <li><a href="news.php">Actualités</a></li>
-                        <li><a href="legalMentions.php">Mentions légales</a></li>
-                        <li><a href="/admin/login.php">Private acess</a></li>
+                        <li><a href="legalMentions">Mentions légales</a></li>
+                        <li><a href="admin/login/main_login.php">Private acess</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-6 col-xs-12 text-right visible-lg visible-md visible-sm hidden-xs">
+                <div class="col-md-6 col-sm-12 text-right visible-lg visible-md visible-sm hidden-xs">
                     <img class="logoImg" src="img/logo_white.png" alt="logo Doge" title="logo Doge">
                 </div>
                 <p>Copyright (c) Doge CLub</p>
@@ -34,12 +34,10 @@
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scrollreveal.min.js"></script>
-<script src="js/navbar.js"></script>
 
 <script type="text/javascript">
 
-    jQuery(function () {
-
+    jQuery(function(){
 
         jQuery("#videoPlayer").YTPlayer();
 
@@ -51,33 +49,44 @@
         jQuery('#videoPlayer').YTPApplyFilters(filters)
 
 
-        //Condition for change of navbar
 
         var php_page = "<?php echo $currentPage; ?>";
 
-        if (php_page == "home") {
+    if (php_page == "home") {
 
-            $('header').css('margin-bottom', '0');
+        $('header').css('margin-bottom','0');
 
-            window.sr = ScrollReveal();
-            sr.reveal('#introduction', {duration: 600},);
-            sr.reveal('#activities', {duration: 600},);
-            sr.reveal('#euratechnologie', {duration: 600},);
-            sr.reveal('#news', {duration: 600},);
-            sr.reveal('#contact', {duration: 600},);
+        window.sr = ScrollReveal();
+        sr.reveal('#introduction', { duration: 600 },);
+        sr.reveal('#activities', { duration: 600 },);
+        sr.reveal('#euratechnologie', { duration: 600 },);
+        sr.reveal('#news', { duration: 600 },);
+        sr.reveal('#contact', { duration: 600 },);
 
-            checkScroll();
+        function checkScroll() {
+            var startY = $('.navbar').height() * 1; //The point where the navbar changes in px
 
-            if ($('.navbar').length > 0) {
-                $(window).on("scroll load resize", function () {
-                    checkScroll();
-                });
+            if ($(window).scrollTop() > startY) {
+                $('.navbar').addClass("scrolled");
+                $('.navbar-default .navbar-nav>li>a').css('color','#333');
+                $('.navbar-default .navbar-nav > .active > a').css('color','#fff');
+            }
+            else {
+                $('.navbar').removeClass("scrolled");
+                $('.navbar-default .navbar-nav>li>a').css('color','#fff');
             }
         }
 
-        else {
-            $('.navbar ').css({"background-color": "#ddd", "color": "#333"});
+        if ($('.navbar').length > 0) {
+            $(window).on("scroll load resize", function () {
+                checkScroll();
+            });
         }
+    }
+
+    else{
+        $('.navbar ').css({"background-color": "#ddd", "color": "#333"});
+    }
 
     });
 

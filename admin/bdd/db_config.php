@@ -7,4 +7,4 @@
 define('DATABASE_HOST',     'localhost');
 define('DATABASE_NAME',     'Doge_Club_BDD');
 define('DATABASE_USER',     'root');
-define('DATABASE_PASSWORD', 'uk&È-ÇÀ_uk');
+define('DATABASE_PASSWORD', 'dimi');

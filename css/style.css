@@ -1,5 +1,3 @@
-/*Modal hack*/
-
 /* HEADER AND NAV  */
 
 .navbar {
@@ -10,11 +8,12 @@
     -o-transition: all 0.8s ease-out;
     -ms-transition: all 0.8s ease-out;
     transition: all 0.8s ease-out;
-    background: rgba(255, 255, 255, 0.5);
+    background: transparent;
 }
 
 .navbar.scrolled {
-    background: rgb(0, 0, 0); /* IE */
+    background: rgb(0, 0, 0);
+    /* IE */
     background: #ddd;
 }
 
@@ -39,10 +38,10 @@ ul.nav {
     border-color: transparent;
     padding-top: 20px;
     padding-bottom: 25px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: transparent;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
+.navbar-default .navbar-nav>.active>a {
     background-color: #FF622A;
     color: #fff;
     border-width: 1px;
@@ -50,9 +49,10 @@ ul.nav {
     transition: background-color 0.5s;
 }
 
-.navbar-default .navbar-nav > li > a:hover {
-    text-decoration: underline;
-    color: #2d7261 !important;
+.navbar-default .navbar-nav>.active>a:hover {
+    background-color: #2d7261;
+    color: #fff !important;
+    transition: background-color 0.5s;
 }
 
 .navbar-default .navbar-toggle {
@@ -63,13 +63,15 @@ ul.nav {
     background-color: #f64c10;
 }
 
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
     background-color: transparent;
 }
 
-.nav > li > a {
+.nav>li>a {
     padding: 10px 30px;
 }
+
 
 /*  --------- section format ----------  */
 
@@ -85,9 +87,15 @@ section {
     padding: 40px 0 60px 0;
 }
 
+
 /*Global font and elements*/
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Josefin Slab', sans-serif;
     text-transform: uppercase;
     line-height: 1.5em;
@@ -99,19 +107,9 @@ h2 {
     text-transform: uppercase;
 }
 
-.mAuto {
-    margin: auto;
-}
-
 h3 {
     margin-top: 0;
     margin-bottom: 20px;
-}
-
-h5 {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-top: 0;
 }
 
 h4 {
@@ -119,7 +117,8 @@ h4 {
     margin-top: 30px;
 }
 
-p, ul {
+p,
+ul {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.5em;
 }
@@ -153,6 +152,7 @@ a:hover {
     font-weight: bold;
 }
 
+
 /* button css */
 
 .no-margin {
@@ -171,11 +171,12 @@ a:hover {
     border: 1px solid #f64c10;
     transition: color 0.4s;
     transition: border 0.5s;
-    transition: background-color 0.5s;
+    sition: background-color 0.5s;
 }
 
 .btn-primary:hover {
-    color: #fff;;
+    color: #fff;
+    ;
     border: 1px solid #2d7261;
     background-color: #2d7261;
     transition: color 0.4s;
@@ -212,6 +213,7 @@ a:hover {
     margin-bottom: 40px;
 }
 
+
 /* News */
 
 .newsFrame {
@@ -222,6 +224,7 @@ a:hover {
     margin-bottom: 20px;
     max-height: 240px;
 }
+
 
 /*FOOTER*/
 
@@ -265,6 +268,7 @@ footer ul li a {
     padding: 0 15px;
 }
 
+
 /*BACKOFFICE*/
 
 #backoffice {
@@ -296,6 +300,11 @@ footer ul li a {
     background-color: #2d7261;
 }
 
+.table-contenu {
+    width: 500px;
+    background-color: green;
+}
+
 table {
     width: 100%;
     margin-bottom: 50px;
@@ -307,7 +316,8 @@ thead {
     color: #fff;
 }
 
-th, td {
+th,
+td {
     padding: 15px 8px;
     text-align: center;
 }
@@ -328,7 +338,8 @@ td {
     margin-top: 40px;
 }
 
-.btnForm, .btnForm:hover {
+.btnForm,
+.btnForm:hover {
     background-color: transparent;
     height: 28px;
     width: 28px;
@@ -359,6 +370,7 @@ td {
 .btnEdit:hover {
     background: url("../img/edit_hover.png") 0 0 no-repeat;
 }
+
 
 /* BUSINESS PAGE*/
 
@@ -411,13 +423,7 @@ td {
 }
 
 .business-link {
-    border-top: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-}
-
-.business-caption {
-    border: 1px solid #ddd;
+    border: 3px solid #2d7261;
 }
 
 #business .business-item .business-caption {
@@ -425,6 +431,8 @@ td {
     margin: 0 auto;
     padding: 25px;
     text-align: center;
+    background-color: #2d7261;
+    color: white;
     margin-bottom: 40px;
 }
 
@@ -444,6 +452,7 @@ td {
     font-size: 3em;
 }
 
+
 /* MODAL */
 
 .business-modal .modal-dialog {
@@ -451,16 +460,6 @@ td {
     height: 100%;
     margin: 0;
     width: 100%;
-}
-
-.newsImg {
-    background-color: #eee;
-}
-
-.newsImg img {
-    display: block;
-    height: 200px;
-    margin: auto;
 }
 
 .business-modal .modal-content {
@@ -555,7 +554,7 @@ td {
     color: #FFF;
     font-weight: bold;
     padding: 0 20px;
-    text-align: center;
+    z-index: 50;
 }
 
 .videoContain {
@@ -572,7 +571,7 @@ td {
 }
 
 .imgContain {
-    background: url("../img/videobgsm.jpg") 0 0 no-repeat;
+    background: url("../img/videobg.jpg") 0 0 no-repeat;
     background-size: cover;
     height: 500px;
 }
@@ -606,80 +605,58 @@ ul.team-social li {
     min-height: 300px;
 }
 
+
 /* MEDIA QUERIES*/
 
 @media (min-width: 767px) {
-
     #business .business-item {
         margin: 0 0 30px;
     }
 }
 
 @media screen and (max-width: 768px) {
-
-    .newsImg img {
-        height: auto;
-    }
-
     .activitiesFrame {
         margin-bottom: 60px;
     }
-
-    .businessDescription {
-        margin-top: 30px;
-    }
-
     .activitiesFrame h4 {
         margin-bottom: 10px;
     }
-
     .newsFrame {
         background-color: #fff;
         padding: 20px;
     }
-
     footer {
         text-align: center;
-        margin-top: 40px;
     }
-
     #socialNetworks ul {
         margin: auto;
         float: none;
     }
-
     #contactForm {
         margin-bottom: 80px;
     }
-
     .newArticle button {
         height: 50px;
         width: 50px;
     }
-
     .btn {
         width: 100%;
     }
-
     .no-responsive {
         width: 50px;
     }
-
     #loginImage img {
         width: 90%;
         margin: auto;
     }
-
     .newsPresentation img {
         margin-bottom: 20px;
     }
-
     .newsPresentation {
         padding: 20px;
         background-color: #eee;
         margin-bottom: 50px;
     }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -693,7 +670,6 @@ ul.team-social li {
         position: absolute;
         width: 1px;
     }
-
     tr {
         border: 3px solid #ddd;
         display: block;
@@ -701,23 +677,19 @@ ul.team-social li {
         border-right: 0;
         border-left: 0;
     }
-
     .table-bordered {
         border: 0;
     }
-
     td {
         border: 1px solid #ddd;
         display: block;
         text-align: right;
     }
-
     td:before {
         content: attr(data-label);
         float: left;
         font-weight: bold;
     }
-
     img {
         margin: auto;
     }

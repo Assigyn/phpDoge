@@ -23,6 +23,8 @@ if ($_POST) {
         $stitre = $_POST['stitre'];
         $date = $_POST['date'];
         $contenu = $_POST['contenu'];
+        $_contenu = addslashes($contenu);
+
 
 
         $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
@@ -33,7 +35,7 @@ if ($_POST) {
         }
 
         // SQL Query
-        $sqlAddQuery = "INSERT INTO evenements (titre, stitre, date, contenu, id_image) VALUES ('$titre','$stitre','$date','$contenu', '$last_id')";
+        $sqlAddQuery = "INSERT INTO evenements (titre, stitre, date, contenu, id_image) VALUES ('$titre','$stitre','$date','$_contenu', '$last_id')";
         $bdd->query($sqlAddQuery);
 
         // Redirection to homepage.
@@ -42,19 +44,27 @@ if ($_POST) {
 }
 ?>
 
-<?php
+<html>
 
-include('../header.php');
+<header>
 
-?>
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
+</header>
 
+
+
+<br><br><br><br>
 <div class="container">
+<a href="login/logout.php" class="btn btn-danger btn-lg btn-block btn-logout pull-right">Logout</a>
     <section id="articleForm">
-        <div class="row">
+        <div class="row add-articles">
             <div class="col-md-8 col-md-offset-2 col-sm-12 bgWhite">
+                <a href="articleListing.php" class="pull-right">
+                <i class="fa fa-chevron-circle-left fa-5x" aria-hidden="true"></i>
+                </a>
                 <h2 class="text-left">Nouvel article</h2>
                     <form action="./add_quotation.php" method="POST" enctype="multipart/form-data"> <!-- FORM STARTS HERE -->
                     <div class="form-group">
@@ -82,19 +92,16 @@ include('../header.php');
                         </p>
                     </div>
                     <div class="form-group">
-                        <label for="contenu">Message</label>
-                        <textarea class="form-control" name="contenu" id="contenu" cols="30" rows="10"><?php echo isset($_POST["contenu"]) ? $_POST["contenu"] : ''; ?></textarea>
+                        <label for="contenu">Contenu</label>
+                        <textarea class="form-control" name="contenu" id="contenu" cols="30" rows="15"><?php echo isset($_POST["contenu"]) ? $_POST["contenu"] : ''; ?></textarea>
                     </div>
-
-                    <div class="form-group sendImageInput"><!-- File input -->
-                        <label for="">Envoi d'image</label>
+                    <!-- File input -->
+                    <div class="form-group sendImageInput">
+                        <label for="">Image</label>
                         <input type="file" name="image" id="image" />  
-                        <br />  
-                        
                         <p class="help-block">Formats acceptés : jpg, png. Max : 2Mo.</p>
                     </div>
-
-                    <button type="submit" name="insert" id="insert" value="Insert" class="btn btn-danger">Envoyer</button>
+                    <button type="submit" name="insert" id="insert" value="Insert" class="btn btn-danger">Publier</button>
                 </form>
             </div>
         </div>
@@ -107,64 +114,36 @@ $bdd->close();
 ?>
 
 
-<div class="container-fluid darkGrey"><!-- Footer section-->
-    <div class="container">
-        <footer>
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Entreprises</a></li>
-                        <li><a href="#">Actualités</a></li>
-                        <li><a href="#">Doge Team</a></li>
-                        <li><a href="#">Mentions légales</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 col-sm-12 text-right visible-lg visible-md visible-sm hidden-xs">
-                    <img class="logoImg" src="img/logo_white.png" alt="logo Doge" title="logo Doge">
-                </div>
-                <p>Copyright (c) Doge CLub</p>
-                <div id="socialNetworks">
-                    <ul>
-                        <li><a href="#"><img class="img-responsive" src="img/fb_icon.png" alt="Facebook"></a></li>
-                        <li><a href="#"><img class="img-responsive" src="img/twitter_icon.png" alt="Twitter"></a></li>
-                        <li><a href="#"><img class="img-responsive" src="img/ytube_icon.png" alt="Twitter"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
-</div>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/scrollreveal.min.js"></script>
+<script type="text/javascript" src="login/js/bootstrap.js"></script>
+<!-- The AJAX login script -->
+<script src="login/js/login.js"></script>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-2.2.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <!-- The AJAX login script -->
-    <script src="js/login.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function(){  //Progressive scroll animation on index page
-        window.sr = ScrollReveal();
-        sr.reveal('#introduction', { duration: 600 },);
-        sr.reveal('#activities', { duration: 600 },);
-        sr.reveal('#euratechnologie', { duration: 600 },);
-        sr.reveal('#news', { duration: 600 },);
-        sr.reveal('#contact', { duration: 600 },);
-    });
-
-</script>
+<script>  
+ $(document).ready(function(){  
+      $('#insert').click(function(){  
+           var image_name = $('#image').val();  
+           if(image_name == '')  
+           {  
+                alert("Please Select Image");  
+                return false;  
+           }  
+           else  
+           {  
+                var extension = $('#image').val().split('.').pop().toLowerCase();  
+                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
+                {  
+                     alert('Invalid Image File');  
+                     $('#image').val('');  
+                     return false;  
+                }  
+           }  
+      });  
+ });  
+ </script>  
 
 
 </body>

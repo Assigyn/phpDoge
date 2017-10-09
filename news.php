@@ -6,10 +6,30 @@ $pageDescription = "Les actualités du club";
 
 include('header.php'); ?>
 
+<?php
+        // Connecting to DB
+        require('bdd/connection.php');
+
+        // Getting ID from previous query ?
+        $idDelete = isset($_GET['delete']) && $_GET['delete'] ? $_GET['delete'] : null;
+
+        // If an ID has been sent, delete this one
+        if ($idDelete) {
+            $sqlQueryDeleteQuote = "DELETE FROM evenements WHERE id = $idDelete";
+            $bdd->query($sqlQueryDeleteQuote);
+        }
+
+        // Display citation's data
+        $sqlQueryQuotes = "SELECT * FROM evenements";
+        $result = $bdd->query($sqlQueryQuotes);
+
+        // Checking query result
+        if (!$result)
+            echo '<p>No result founded.</p>';
+?>
+
 <div class="container">
-
     <section id="news">
-
         <div class="row">
             <div class="col-xs-12">
                 <h2>Les actualités</h2>
@@ -19,69 +39,59 @@ include('header.php'); ?>
                 </div>
             </div>
         </div>
+        <div id="main" class="col-md-8 col-sm-12">
 
-        <div id="main" class="col-md-7 col-sm-12">
-
-
+        <!-- affichege des elements a partir de la bdd -->
+        <?php  
+            while ($quote = $result->fetch_assoc()) { 
+         ?>
             <div class="row">
-
                 <div class="newsPresentation">
+                    <!-- image -->
                     <div class="col-xs-12 col-sm-5 no-margin-left">
-                        <div class="newsImg">
-                            <a data-toggle="modal" href="#businessModal1"><img src="img/news_kayak.jpg" class="img-responsive" alt="photo"></a>
-                        </div>
+                        <a data-toggle="modal" href="#businessModal1">
+                            <?php
+                                $sqlQueryImage = "SELECT name FROM tbl_images WHERE id =" . $quote['id_image'];
+                                $imageResult = $bdd->query($sqlQueryImage);
+                                $imageName = $imageResult->fetch_assoc();
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode($imageName['name']).'" height="250" width="100%"/>'
+                            ?>
+                        </a>
                     </div>
+                    <!-- titre et description -->
                     <div class="col-xs-12 col-sm-7 no-margin">
+                            <!-- titre -->
                             <div class="titleLeft col-xs-12 no-margin">
-                                <h5>Premier meet-up de Kayak Communication</h5>
+                                <h3><?php echo $quote['titre']; ?></h3>
                             </div>
+                            <!--description-->
                             <div class="col-lg-12 no-margin ">
-                                <p>Ce mardi 19 Septembre 2016, Kayak Communication a effectué son premier meet-up d'une longue série dans le domaine du numérique. Habib Oualidi y a présenté le concept de "créer l'innovation" depuis les locaux de la WildCodeSchool Lille. #innovation #ptid</p>
+                                <p><?php echo $quote['stitre']; ?></p>
                             </div>
+                        <!-- en savoir plus -->
                         <div class="knowMore">
-                            <a data-toggle="modal" href="#businessModal1"> > En savoir plus </a>
+                            <a data-toggle="modal" href="#<?php echo $quote['id'];?>">En savoir plus</a>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-            <div class="row">
-                <div class="newsPresentation">
-                    <div class="col-xs-12 col-sm-5 no-margin-left">
-                        <div class="newsImg">
-                            <a data-toggle="modal" href="#businessModal1"><img src="img/news_badminton.jpg" class="img-responsive" alt="photo"></a>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-7 no-margin">
-                        <div class="titleLeft col-xs-12 no-margin">
-                            <h5>Résultats de la 4e journée du tournoi de badminton inter-entreprises</h5>
-                        </div>
-                        <div class="col-lg-12 no-margin ">
-                            <p>Le Doge Club a mis en ligne les résultats de la dernière journée du tournoi de badminton.</p>
-                        </div>
-                        <div class="knowMore">
-                            <a data-toggle="modal" href="#businessModal1"> > En savoir plus </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+                    
+        <?php } ?>
 
         </div>
 
 
-        <div class="col-md-1 visible-md visible-lg hidden-sm hidden-xs"></div>
-
-
         <!-- iFrame Facebook -->
-        <div class="col-md-4 col-md-offset-1 hidden-sm hidden-xs no-margin">
+        <div class="col-md-4 hidden-sm hidden-xs no-margin">
             <iframe class="socialNetworkWidth col-sm-6" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdogeclubeuratec%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                    width="100%" height="400"  style="margin-bottom:40px;padding-bottom:40px;border-bottom: 1px solid #ccc;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true">
+                    height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true">
             </iframe>
 
             <!-- iFrame Twitter -->
         <div id="twitterPart">
-            <a class="twitter-timeline socialNetworkWidth" data-height="400" href="https://twitter.com/TwitterDev">Tweets by TwitterDev</a>
+            <a class="twitter-timeline socialNetworkWidth" data-height="800" href="https://twitter.com/TwitterDev">Tweets by TwitterDev</a>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
 
@@ -92,9 +102,18 @@ include('header.php'); ?>
 
 </div>
 
+<?php
+// Display citation's data
+        $sqlQueryQuotes = "SELECT * FROM evenements";
+        $result = $bdd->query($sqlQueryQuotes);
+?>
 
+<?php  
+    while ($quote = $result->fetch_assoc()) { 
+?>
 <!-- Modal Drawer -->
-<div class="business-modal modal fade" id="businessModal1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="business-modal modal fade" id="<?php echo $quote['id'];?>" tabindex="" role="dialog" aria-hidden="true">
+    <!-- affichege des elements a partir de la bdd -->
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -104,34 +123,36 @@ include('header.php'); ?>
             </div>
             <div class="container">
                 <div class="row">
+          
                     <div class="col-md-8 col-md-offset-2 col-sm-12">
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
-                            <h2>Titre de l'article</h2>
-                            <p class="item-intro text-muted"></p>
-                            <img class="d-block mx-auto img-responsive" src="img/news_bg.jpg" alt="illustration de l'article">
-                            <p class="text-left">À l'heure de la standardisation des intérieurs du monde entier, nous, Drawer, prenons le pari que le design ne s'uniformise
-                                pas si facilement, que les formes ont encore à dire et que l'on peut aimer ce qui n'est pas toujours
-                                « instagramable »
-                                Drawer.fr est une startup e-commerce de meubles design basée à Euratechnologies à Lille. Notre entreprise connaît un fort
-                                développement depuis son lancement en 2011.
-                            </p>
-                            <p class="text-left">À l'heure de la standardisation des intérieurs du monde entier, nous, Drawer, prenons le pari que le design ne s'uniformise
-                                pas si facilement, que les formes ont encore à dire et que l'on peut aimer ce qui n'est pas toujours
-                                « instagramable »
-                                Drawer.fr est une startup e-commerce de meubles design basée à Euratechnologies à Lille. Notre entreprise connaît un fort
-                                développement depuis son lancement en 2011.
-                            </p>
+                            <h2><?php echo $quote['titre']; ?></h2>
+                            <p class="item-intro text-muted"><?php echo $quote['stitre']; ?></p>
+
+                                <?php
+                                $sqlQueryImage = "SELECT name FROM tbl_images WHERE id =" . $quote['id_image'];
+                                $imageResult = $bdd->query($sqlQueryImage);
+                                $imageName = $imageResult->fetch_assoc();
+                                echo '<img class="d-block mAuto img-responsive" src="data:image/jpeg;base64,'.base64_encode($imageName['name']).'" />'
+                                ?>
+
+                            <p class="text-left"><?php echo $quote['contenu']; ?></p>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fa fa-times"></i>Fermer
                             </button>
-
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php } ?>
+
+<?php
+// Closing DB connection
+$bdd->close();
+?>
 
 <?php include('footer.php'); ?>

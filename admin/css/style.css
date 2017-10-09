@@ -3,12 +3,27 @@
 .navbar {
     margin: 0;
     min-height: 60px;
+    -webkit-transition: all 0.8s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    -o-transition: all 0.8s ease-out;
+    -ms-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out;
+    background: transparent;
+}
+
+.navbar.scrolled {
+    background: rgb(0, 0, 0);
+    /* IE */
+    background: #ddd;
+}
+
+header {
+    margin-bottom: 90px;
 }
 
 .navbar-brand {
     display: inline-block;
     padding: 0;
-
 }
 
 ul.nav {
@@ -22,10 +37,11 @@ ul.nav {
 .navbar-default {
     border-color: transparent;
     padding-top: 20px;
-    padding-bottom: 18px;
+    padding-bottom: 25px;
+    background-color: transparent;
 }
 
-.navbar-default .navbar-nav > .active > a {
+.navbar-default .navbar-nav>.active>a {
     background-color: #FF622A;
     color: #fff;
     border-width: 1px;
@@ -33,9 +49,9 @@ ul.nav {
     transition: background-color 0.5s;
 }
 
-.navbar-default .navbar-nav > .active > a:hover {
+.navbar-default .navbar-nav>.active>a:hover {
     background-color: #2d7261;
-    color: #fff;
+    color: #fff !important;
     transition: background-color 0.5s;
 }
 
@@ -47,13 +63,15 @@ ul.nav {
     background-color: #f64c10;
 }
 
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
     background-color: transparent;
 }
 
-.nav > li > a {
+.nav>li>a {
     padding: 10px 30px;
 }
+
 
 /*  --------- section format ----------  */
 
@@ -69,9 +87,15 @@ section {
     padding: 40px 0 60px 0;
 }
 
+
 /*Global font and elements*/
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Josefin Slab', sans-serif;
     text-transform: uppercase;
     line-height: 1.5em;
@@ -93,13 +117,27 @@ h4 {
     margin-top: 30px;
 }
 
-p, ul {
+p,
+ul {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.5em;
 }
 
 a {
     color: #fb6d3b;
+}
+
+.alert-danger {
+    padding: 8px;
+    font-size: 13px;
+    color: red;
+    font-style: italic;
+    border: 0;
+    background-color: transparent;
+}
+
+.whiteText {
+    color: #fff;
 }
 
 a:hover {
@@ -114,11 +152,17 @@ a:hover {
     font-weight: bold;
 }
 
+
 /* button css */
 
 .no-margin {
     margin: 0;
     padding: 0;
+}
+
+.no-margin-left {
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .btn-primary {
@@ -131,7 +175,8 @@ a:hover {
 }
 
 .btn-primary:hover {
-    color: #fff;;
+    color: #fff;
+    ;
     border: 1px solid #2d7261;
     background-color: #2d7261;
     transition: color 0.4s;
@@ -168,6 +213,7 @@ a:hover {
     margin-bottom: 40px;
 }
 
+
 /* News */
 
 .newsFrame {
@@ -176,7 +222,9 @@ a:hover {
 
 .newsFrame img {
     margin-bottom: 20px;
+    max-height: 240px;
 }
+
 
 /*FOOTER*/
 
@@ -200,15 +248,26 @@ footer ul li a {
 
 #socialNetworks ul {
     list-style-type: none;
-    margin: 0;
+    margin: 30px 0 0 0;
     padding: 0;
     float: right;
+}
+
+.socialNetworkWidth {
+    width: 100%;
+}
+
+.copyright {
+    color: #f64c10;
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 #socialNetworks ul li {
     display: inline-block;
     padding: 0 15px;
 }
+
 
 /*BACKOFFICE*/
 
@@ -221,14 +280,15 @@ footer ul li a {
     padding: 0 15px 40px 15px;
 }
 
+.btn-deco {
+    background-color: red;
+    color: white;
+    width: 12%;
+}
+
 .sendImageInput {
     background-color: #eee;
     padding: 20px;
-}
-
-.bgWhite {
-    background-color: white;
-    padding-top: 20px;
 }
 
 .bgGrey {
@@ -241,9 +301,51 @@ footer ul li a {
     background-color: #2d7261;
 }
 
+.listing-articles {
+    padding-top: 64px;
+}
+
+.add-articles {
+    padding-top: 64px;
+}
+
+.title-listing {
+    color: #f64c10;
+}
+
 table {
     width: 100%;
     margin-bottom: 50px;
+}
+
+.table-titre {
+    width: 200px;
+    word-wrap: break-word;
+}
+
+.table-stitre {
+    width: 200px;
+    word-wrap: break-word;
+}
+
+.table-contenu {
+    width: 400px;
+    word-wrap: break-word;
+}
+
+.table-image {
+    width: 150px;
+    word-wrap: break-word;
+}
+
+.table-date {
+    width: 150px;
+    word-wrap: break-word;
+}
+
+.formInline {
+    padding: 0px;
+    margin: 0px;
 }
 
 thead {
@@ -252,7 +354,8 @@ thead {
     color: #fff;
 }
 
-th, td {
+th,
+td {
     padding: 15px 8px;
     text-align: center;
 }
@@ -269,42 +372,39 @@ td {
     padding: 40px;
 }
 
-.panel-body button {
-    margin-top: 40px;
-}
-
-.btnForm, .btnForm:hover{
+.btnForm,
+.btnForm:hover {
     background-color: transparent;
     height: 28px;
     width: 28px;
     color: transparent;
-    border:0;
+    border: 0;
 }
 
-.btnDelete{
+.btnDelete {
     background: url("../img/delete.png") 0 0 no-repeat;
 }
 
-.btnDelete:hover{
+.btnDelete:hover {
     background: url("../img/delete_hover.png") 0 0 no-repeat;
 }
 
-.btnView{
+.btnView {
     background: url("../img/view.png") 0 0 no-repeat;
 }
 
-.btnView:hover{
+.btnView:hover {
     background: url("../img/view_hover.png") 0 0 no-repeat;
 }
 
-
-.btnEdit{
+.btnEdit {
     background: url("../img/edit.png") 0 0 no-repeat;
 }
 
-.btnEdit:hover{
+.btnEdit:hover {
     background: url("../img/edit_hover.png") 0 0 no-repeat;
 }
+
 
 /* BUSINESS PAGE*/
 
@@ -385,6 +485,7 @@ td {
 .glyphiconLg {
     font-size: 3em;
 }
+
 
 /* MODAL */
 
@@ -478,64 +579,133 @@ td {
     opacity: 0;
 }
 
+#videoPlayer {
+    height: 100vh;
+}
+
+.videoContain h2 {
+    margin-top: 40vh;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0 20px;
+    z-index: 50;
+}
+
+.videoContain {
+    background: url("../img/videobg.jpg") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.imgContain h2 {
+    margin-top: 40vh;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0 20px;
+    font-size: 2em;
+}
+
+.imgContain {
+    background: url("../img/videobg.jpg") 0 0 no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.newsPresentation {
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+#teamPortraits {
+    padding-top: 40px !important;
+}
+
+ul.team-social {
+    list-style-type: none !important;
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+}
+
+ul.team-social li {
+    display: inline-block;
+    padding: 15px;
+}
+
+.portraitInd {
+    min-height: 300px;
+}
+
+
 /* MEDIA QUERIES*/
 
 @media (min-width: 767px) {
-
     #business .business-item {
         margin: 0 0 30px;
+    }
+    .btn-logout {
+        width: 20%;
     }
 }
 
 @media screen and (max-width: 768px) {
-
     .activitiesFrame {
         margin-bottom: 60px;
     }
-
     .activitiesFrame h4 {
         margin-bottom: 10px;
     }
-
     .newsFrame {
         background-color: #fff;
         padding: 20px;
     }
-
     footer {
         text-align: center;
     }
-
     #socialNetworks ul {
         margin: auto;
         float: none;
     }
-
     #contactForm {
         margin-bottom: 80px;
     }
-
     .newArticle button {
         height: 50px;
         width: 50px;
     }
-
     .btn {
         width: 100%;
     }
-
+    .btn-deco {
+        width: 100%;
+    }
+    .btn-logout {
+        width: 25%;
+    }
     .no-responsive {
         width: 50px;
     }
-
     #loginImage img {
         width: 90%;
         margin: auto;
     }
-
+    .newsPresentation img {
+        margin-bottom: 20px;
+    }
+    .newsPresentation {
+        padding: 20px;
+        background-color: #eee;
+        margin-bottom: 50px;
+    }
 }
 
 @media screen and (max-width: 600px) {
+    .btn-deco {
+        width: 20%;
+    }
     thead {
         border: 3px solid #ddd;
         clip: rect(0 0 0 0);
@@ -546,7 +716,6 @@ td {
         position: absolute;
         width: 1px;
     }
-
     tr {
         border: 3px solid #ddd;
         display: block;
@@ -554,23 +723,19 @@ td {
         border-right: 0;
         border-left: 0;
     }
-
     .table-bordered {
         border: 0;
     }
-
     td {
         border: 1px solid #ddd;
         display: block;
         text-align: right;
     }
-
     td:before {
         content: attr(data-label);
         float: left;
         font-weight: bold;
     }
-
     img {
         margin: auto;
     }
