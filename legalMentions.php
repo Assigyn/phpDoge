@@ -1,23 +1,19 @@
 <?php
+
+$titlePage = "Mentions légales";
+$currentPage = "mentions";
+$pageDescription = "Les mentions légales du site du Doge Club";
+
 include ('header.php');
 ?>
 
-<div id="BgHeader" class="legalBg">
-</div>
-
-</div> <!-- End of fluid-container -->
-
 <div class="container">
 
-    <section>
+    <section id="mentions">
 
         <div class="row">
             <div class="col-xs-12">
                 <h2>Mentions legales</h2>
-                <div id="titleDeco">
-                    <div id="titleDecoForm">
-                    </div>
-                </div>
             </div>
         </div>
 
