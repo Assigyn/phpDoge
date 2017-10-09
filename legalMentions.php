@@ -1,58 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Mentions légales</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Open+Sans" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/logo_small.png" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-
-
-<header>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand hidden-xs hidden-sm visible-md visible-lg" href="#">
-                    <img src="img/logo.png" class="logoImg" alt="Doge_logo" title="Doge logo">
-                </a>
-                <a class="navbar-brand visible-xs visible-sm hidden-md" href="#">
-                    <img src="img/logo_small.png" class="logoImg" alt="Doge_logo" title="Doge logo">
-                </a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="businesses.php">Entreprises</a></li>
-                    <li><a href="team.php">Doge Team</a></li>
-                    <li><a href="news.php">Actualités</a></li>
-                    <li><a class="js-scrollTo" href="index.php#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav><!-- End of navbar-->
-</header>
+<?php
+include ('header.php');
+?>
 
 <div id="BgHeader" class="legalBg">
 </div>
@@ -146,42 +94,4 @@
 
 </div>
 
-<footer>
-    <!-- <php include("footer.php"); > Volontairement enlevé les ? pour mettre en commentaire -->
-    <div class="container-fluid darkGrey"><!-- Footer section-->
-        <div class="container">
-            <footer>
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Entreprises</a></li>
-                            <li><a href="#">Actualités</a></li>
-                            <li><a href="#">Doge Team</a></li>
-                            <li><a href="#">Mentions légales</a></li>
-                            <li class="copyright">Copyright © Doge Club</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-sm-12 text-right visible-lg visible-md visible-sm hidden-xs">
-                        <img class="logoImg" src="img/logo_white.png" alt="logo Doge" title="logo Doge">
-                    </div>
-                    <div id="socialNetworks">
-                        <ul>
-                            <li><a href="#"><img class="img-responsive" src="img/fb_icon.png" alt="Facebook"></a></li>
-                            <li><a href="#"><img class="img-responsive" src="img/twitter_icon.png" alt="Twitter"></a></li>
-                            <li><a href="#"><img class="img-responsive" src="img/ytube_icon.png" alt="Twitter"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-</footer>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-
-</body>
-</html>
+<?php include ('footer.php'); ?>

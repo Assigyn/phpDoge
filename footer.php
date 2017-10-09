@@ -8,7 +8,7 @@
                         <li><a href="business.php">Entreprises</a></li>
                         <li><a href="team.php">Doge Team</a></li>
                         <li><a href="news.php">Actualités</a></li>
-                        <li><a href="legalMentions">Mentions légales</a></li>
+                        <li><a href="legalMentions.php">Mentions légales</a></li>
                         <li><a href="/admin/login.php">Private acess</a></li>
                     </ul>
                 </div>
